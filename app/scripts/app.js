@@ -8,11 +8,11 @@
          $stateProvider
               .state('landing', {
                   url: '/',
-                  templateURL: '/templates/landing.html'
+                  templateUrl: '/templates/landing.html'
               })
               .state('album', {
                   url: '/album',
-                  templateURL: '/templates/album.html'
+                  templateUrl: '/templates/album.html'
               });
     }
 
