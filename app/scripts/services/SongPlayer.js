@@ -132,7 +132,7 @@
                 setSong(song);
                 playSong(song);
             }
-        }
+        };
 
         return SongPlayer;
 
