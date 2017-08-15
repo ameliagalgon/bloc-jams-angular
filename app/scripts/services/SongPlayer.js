@@ -56,6 +56,15 @@
             return currentAlbum.songs.indexOf(song);
         };
 
+        /**
+        * @function stopSong
+        * @desc Stops the current buzz object and sets the playing attribute of the current songs to null
+        * @param {Object} song
+        */
+        var stopSong = function(song){
+            currentBuzzObject.stop();
+            song.playing = null;
+        }
 
         /**
         * @desc Current song
@@ -100,8 +109,7 @@
             currentSongIndex--;
 
             if(currentSongIndex < 0){
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong(SongPlayer.currentSong)
             } else{
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
@@ -118,8 +126,7 @@
             currentSongIndex++;
 
             if(currentSongIndex > currentAlbum.songs.length - 1){
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong(SongPlayer.currentSong);
             } else{
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
