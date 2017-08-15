@@ -90,30 +90,26 @@
             song.playing = false;
         };
 
-        return SongPlayer;
-
         /**
         * @function previous()
         * @desc Skips to the previous song in the songs list
         */
         SongPlayer.previous = function(){
-            //debugger();
-            console.log("enter the previous function");
             var currentSongIndex = getSongIndex(SongPlayer.currentSong)
             currentSongIndex--;
-            console.log(currentSongIndex);
 
             if(currentSongIndex < 0){
-                console.log("currentSongIndex is less than zero");
                 currentBuzzObject.stop();
                 SongPlayer.currentSong.playing = null;
             } else{
-                console.log("currentSongIndex is greater than zero");
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
                 playSong(song);
             }
         };
+
+        return SongPlayer;
+
     }
 
     angular
