@@ -1,5 +1,5 @@
 (function(){
-    function SongPlayer(Fixtures){
+    function SongPlayer($rootScope, Fixtures){
         /**
         * @desc Song player empty object
         * @type {Object}
@@ -7,16 +7,16 @@
         var SongPlayer = {};
 
         /**
-        * @desc Album used to obtain the songlist
-        * @type {Object}
-        */
-        var currentAlbum = Fixtures.getAlbum();
-
-        /**
         * @desc Buzz object audio file
         * @type {Object}
         */
         var currentBuzzObject = null;
+
+        /**
+        * @desc Album used to obtain the songlist
+        * @type {Object}
+        */
+        var currentAlbum = Fixtures.getAlbum();
 
         /**
         * @function setSong
@@ -35,6 +35,9 @@
             });
 
             SongPlayer.currentSong = song
+            if(!SongPlayer.currentAlbum && SongPlayer.currentSong){
+                SongPlayer.currentAlbum = currentAlbum;
+            }
         };
 
         /**
@@ -71,6 +74,19 @@
         * @type {Object}
         */
         SongPlayer.currentSong = null;
+
+        /**
+        * @desc Current album
+        * @type {Object}
+        */
+        SongPlayer.currentAlbum = null;
+
+
+        /**
+        * @desc Current playback time (in seconds) of currently playing song
+        * @type {Number}
+        */
+        SongPlayer.currentTime = null;
 
         /**
         * @function play()
@@ -134,11 +150,22 @@
             }
         };
 
+        /**
+        * @function setCurrentTime
+        * @desc Set current time (in seconds) of currently playing song
+        * @param {Number} time
+        */
+        SongPlayer.setCurrentTime = function(time){
+            if(currentBuzzObject){
+                currentBuzzObject.setTime(time);
+            }
+        };
+
         return SongPlayer;
 
     }
 
     angular
         .module('blocJams')
-        .factory('SongPlayer', ["Fixtures", SongPlayer]);
+        .factory('SongPlayer', ["$rootScope", "Fixtures", SongPlayer]);
 })();
