@@ -23,11 +23,11 @@
 
                 var seekBar = $(element)
 
-                attributes.$observe('value', function(){
+                attributes.$observe('value', function(newValue){
                     scope.value = newValue;
                 });
 
-                attributes.$observe('max', function(){
+                attributes.$observe('max', function(newValue){
                     scope.max = newValue;
                 });
 
@@ -57,7 +57,7 @@
                 scope.trackThumb = function(){
                     $document.bind('mousemove.thumb', function(event){
                         var percent = calculatePercent(seekBar, event);
-                        
+
                         scope.$apply(function(){
                             scope.value = percent * scope.max;
                             notifyOnChange(scope.value);
