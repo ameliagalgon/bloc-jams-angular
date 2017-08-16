@@ -32,7 +32,7 @@
             currentBuzzObject = new buzz.sound(song.audioUrl, {
                 formats: ['mp3'],
                 preload: true,
-                //volume: 10
+                volume: SongPlayer.currentVolume
             });
 
             currentBuzzObject.bind('timeupdate', function(){
@@ -81,22 +81,21 @@
         * @type {Object}
         */
         SongPlayer.currentSong = null;
-
         /**
-<<<<<<< HEAD
-=======
         * @desc Current album
         * @type {Object}
         */
         SongPlayer.currentAlbum = null;
-
-
-        /**
->>>>>>> 8ebc87cda6e8b39dced52eab358965999821ce34
+        /*
         * @desc Current playback time (in seconds) of currently playing song
         * @type {Number}
         */
         SongPlayer.currentTime = null;
+        /**
+        * @desc volume
+        * @type {Number}
+        */
+        SongPlayer.volume = null;
 
         /**
         * @function play()
@@ -170,6 +169,17 @@
                 currentBuzzObject.setTime(time);
             }
         };
+
+        /**
+        * @function setVolume
+        * @desc Set volume of the current buzz object
+        * @param {Number} volume
+        */
+        SongPlayer.setVolume = function(volume){
+            if(currentBuzzObject){
+                currentBuzzObject.setVolume(volume);
+            }
+        }
 
         return SongPlayer;
 

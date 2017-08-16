@@ -43,7 +43,7 @@
                         scope.onChange({value: newValue});
                     }
                 };
-                //TODO: find out if ng-style continuously calls percentString so that it can update the seek bar
+
                 scope.fillStyle = function(){
                     return {width: percentString()};
                 };
