@@ -7,16 +7,16 @@
         var SongPlayer = {};
 
         /**
-        * @desc Album used to obtain the songlist
-        * @type {Object}
-        */
-        var currentAlbum = Fixtures.getAlbum();
-
-        /**
         * @desc Buzz object audio file
         * @type {Object}
         */
         var currentBuzzObject = null;
+
+        /**
+        * @desc Album used to obtain the songlist
+        * @type {Object}
+        */
+        var currentAlbum = Fixtures.getAlbum();
 
         /**
         * @function setSong
@@ -41,6 +41,9 @@
             });
 
             SongPlayer.currentSong = song
+            if(!SongPlayer.currentAlbum && SongPlayer.currentSong){
+                SongPlayer.currentAlbum = currentAlbum;
+            }
         };
 
         /**
@@ -79,6 +82,16 @@
         SongPlayer.currentSong = null;
 
         /**
+<<<<<<< HEAD
+=======
+        * @desc Current album
+        * @type {Object}
+        */
+        SongPlayer.currentAlbum = null;
+
+
+        /**
+>>>>>>> 8ebc87cda6e8b39dced52eab358965999821ce34
         * @desc Current playback time (in seconds) of currently playing song
         * @type {Number}
         */
